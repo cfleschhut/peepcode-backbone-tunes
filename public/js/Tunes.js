@@ -37,7 +37,15 @@
     }
   });
 
-  window.LibraryAlbumView = AlbumView.extend({});
+  window.LibraryAlbumView = AlbumView.extend({
+    events: {
+      'click .queue.add': 'select'
+    },
+    select: function(e) {
+      this.collection.trigger('select', this.model);
+      console.log('triggered select', this.model);
+    }
+  });
 
   window.LibraryView = Backbone.View.extend({
     tagName: 'section',
